@@ -4,6 +4,7 @@
 Convert uploaded images to optimized **JPG or PNG** format and download them as a single ZIP file — directly inside WordPress.  
 Temporary files are deleted instantly after download. Nothing is stored on the server.
 
+![SeoMEW Logo](indir.png)
 
 ---
 
