@@ -1,6 +1,6 @@
 <?php
 if (!isset($_FILES['images'])) {
-    wp_die('Dosya bulunamadı.');
+    wp_die('File not found.');
 }
 
 $upload_dir = wp_upload_dir();
@@ -24,19 +24,19 @@ foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
 
     $allowed = ['jpg', 'jpeg', 'png', 'webp', 'bmp', 'tiff'];
     if (!in_array($ext, $allowed)) {
-        $log[] = "❌ $original_name: Geçersiz dosya uzantısı ($ext)";
+        $log[] = "❌ $original_name: Invalid file extension ($ext)";
         continue;
     }
 
     $image_data = @file_get_contents($tmp_name);
     if (!$image_data) {
-        $log[] = "❌ $original_name: Dosya okunamadı!";
+        $log[] = "❌ $original_name: File could not be read!";
         continue;
     }
 
     $image = @imagecreatefromstring($image_data);
     if (!$image) {
-        $log[] = "❌ $original_name: Görsel oluşturulamadı!";
+        $log[] = "❌ $original_name: Image could not be generated!";
         continue;
     }
 
@@ -103,7 +103,7 @@ foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
 $zip_path = $temp_dir . 'converted_images.zip';
 $zip = new ZipArchive();
 if ($zip->open($zip_path, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== TRUE) {
-    wp_die('❌ ZIP dosyası oluşturulamadı.');
+    wp_die('❌ Failed to create ZIP file.');
 }
 
 // Görselleri ZIP'e ekle
