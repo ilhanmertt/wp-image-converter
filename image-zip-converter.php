@@ -16,10 +16,10 @@ function izc_display_form() {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <div class="container my-4 p-4 border rounded bg-light shadow-sm text-center">
-        <h4 class="mb-3">Görselleri JPG Formatına Dönüştür</h4>
+        <h4 class="mb-3">Convert Images to JPG Format</h4>
         <form id="izc-form" enctype="multipart/form-data">
             <input type="file" name="images[]" multiple required class="form-control mb-3" accept=".jpg,.jpeg,.png,.webp,.bmp">
-            <button type="submit" class="btn btn-primary">Dönüştür ve ZIP Olarak İndir</button>
+            <button type="submit" class="btn btn-primary">Convert and Download as ZIP</button>
         </form>
 
         <div id="upload-status" class="mt-3" style="display:none;">
@@ -77,11 +77,11 @@ function izc_display_form() {
                     setTimeout(() => {
                         statusDiv.style.display = 'none';
                         progressBar.style.width = '0%';
-                        resultDiv.innerHTML = '<div class="alert alert-success">✅ Dönüştürme tamamlandı. ZIP dosyan indirildi.</div>';
+                        resultDiv.innerHTML = '<div class="alert alert-success">✅ Conversion complete. Your ZIP file has been downloaded.</div>';
                         form.reset();
                     }, 3000);
                 } else {
-                    resultDiv.innerHTML = '<div class="alert alert-danger">❌ Bir hata oluştu. ZIP indirilemedi.</div>';
+                    resultDiv.innerHTML = '<div class="alert alert-danger">❌ An error occurred. The ZIP could not be downloaded.</div>';
                 }
             };
 
